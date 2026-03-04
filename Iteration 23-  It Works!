@@ -1,0 +1,89 @@
+fry_choice = False
+drink_choice = False
+attempts = 0
+Order_Total = 0
+Drink_Attempts = 0
+while True:
+    order = input ("Which one would you like?")
+    if order == " Chicken" :
+        print ("Okay,That will be 2.50$")
+        Order_Total += 2.50
+        burger_type = True
+        break
+    elif order == " Beef":
+        print ("Okay,That will be 3.50$")
+        Order_Total += 3.50
+        burger_type = True
+        break
+    elif order == " Veggie":
+        print ("Okay,That will be 3.00$")
+        Order_Total += 3.00
+        burger_type = True
+        break
+    else:
+        print ("Sorry, we don't serve that here")
+    attempts +=1
+    if attempts == 3:
+        print ("Please Go Away, Your holding up the Line")    
+        exit()
+while burger_type == True:
+    drink = input ("Would you like a drink with that?")
+    if drink == " Yes" :
+        drink_choice = True
+        break
+    elif drink == " No" :  
+        Fry_Time = True
+        break
+    else:
+        print ("Sorry, I don't know what your talking about")   
+        exit()
+while drink_choice == True :
+    drink_size = input ("Okay, Would you like Small, Medium, Or Large?")
+    if drink_size == " Small" :
+        print ("Okay, That will be an additional 1.00$")
+        Order_Total += 1.00
+        Fry_Time = True
+        break
+    elif drink_size == " Medium" :
+        print ("Okay, That will be an additional 1.75$")
+        Order_Total += 1.75
+        Fry_Time = True
+        break
+    elif drink_size == " Large" :
+        print ("Okay, That will be an additional 2.25")
+        Order_Total += 2.25
+        Fry_Time = True
+        break
+print (f"Okay, So far your order total is {Order_Total:.2f}$")
+if Fry_Time == True :
+    fry = input ("Would you like Fries with that as well?")
+    if fry == " Yes" :
+        fry_choice = True
+    elif fry == " No" :  
+        h = True
+    else:
+        print ("Sorry, I don't know what your talking about")   
+        exit()
+while fry_choice == True :
+    fry_size = input ("Okay, Would you like Small, Medium, Or Large?")
+    if fry_size == " Small" :
+        Mega_Small = input ("Would You Like to Mega-Size your Small Fries?")
+        if Mega_Small == " Yes":
+            print ("Okay that will be an additional 2:00$")
+            h = True
+            break
+        else:
+            print ("Okay, That will be an additional 1.00$")
+            Order_Total += 1.00
+            h = True
+            break
+    elif fry_size == " Medium" :
+        print ("Okay, That will be an additional 1.75$")
+        Order_Total += 1.50
+        h = True
+        break
+    elif fry_size == " Large" :
+        print ("Okay, That will be an additional 2.25")
+        Order_Total += 2.00
+        h = True
+        break
