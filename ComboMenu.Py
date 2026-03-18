@@ -1,45 +1,52 @@
-def Order_Donut():
-    attempts = 0
-    Donut_Not_Selected = True
-    while Donut_Not_Selected:
-        order = input ("Which one would you like?")
-        if order == " Chocolate Frosted":
-            return (order, 2.50)
-        elif order == " Strawberry Frosted":
-            return (order, 3.50)
-        elif order == " Boston Creme":
-            return (order, 3.00)
-        else:
-            print ("Sorry, we don't serve that here")
-        attempts +=1
-        if attempts == 3:
-            print ("Please Go Away, Your holding up the Line")    
-            break
-    return (None, 0.0)
-
 donut_type = False
 Dozen_Time = True
 double_donut = False
+initial = True
 Donut_Hole_choice = False
 Sugar_Price = 0
 max_value = 10
 min_value = 0
 fry_choice = False
 drink_choice = False
+attempts = 0
 Order_Total = 0
 Drink_Attempts = 0
+
 print ("Hello, Welcome To Krispy Kreme, unfortunately were low on donuts and only have") 
 print ("Chocolate Frosted, Strawberry Frosted, and Boston Creme.")
-first_choice, cost = Order_Donut()
-Order_Total += cost
-doublethat = input ("Would you like any other donuts?")
-if doublethat == " Yes":
-        second_choice, cost = Order_Donut()
-        doublethat
-        third_choice, cost = Order_Donut() 
-        Order_Total += cost
-elif doublethat == " No":
+while initial == True:
+    order = input ("Which one would you like?")
+    if order == " Chocolate Frosted":
+        print ("Okay,That will be 2.50$")
+        Order_Total += 2.50
+        double_donut = True
+        initial = False
+        break
+    elif order == " Strawberry Frosted":
+        print ("Okay,That will be 3.50$")
+        Order_Total += 3.50
+        double_donut = True
+        initial = False
+        break
+    elif order == " Boston Creme":
+        print ("Okay,That will be 3.00$")
+        Order_Total += 3.00
+        double_donut = True
+        initial = False
+        break
+    else:
+        print ("Sorry, we don't serve that here")
+    attempts +=1
+    if attempts == 3:
+        print ("Please Go Away, Your holding up the Line")    
+        break
+while double_donut == True:
+    doublethat = input ("Would you like any other donuts?")
+    if doublethat == " Yes":
+        initial == True
+    elif doublethat == " No":
         donut_type == True
+        break
 while donut_type == True:
     drink = input ("Would you like a Coffee with that?")
     if drink == " Yes" :
