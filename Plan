@@ -1,0 +1,18 @@
+My plan for this project is to make a combo menu with multiple different options.
+- Iteration 1
+   - Set 3 different options that have different prices
+   - Have a response for those options
+- Iteration 2
+   - Have a boolean that offers a yes or no input
+   - Have 3 options with different prices based off of that boolean
+   - The price of the options should be listed
+- Iteration 3 
+   - Have a boolean that offers a yes or no input
+   - Have 3 options with different prices based off of that boolean
+   - Offer a boolean if one of those options is picked
+     - This boolean should offer a different price option
+- Iteration 4
+   - List what you ordered and the total price
+
+Make it themed differently from the example
+Make correct answers only work
