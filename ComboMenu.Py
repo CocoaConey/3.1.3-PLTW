@@ -1,3 +1,9 @@
+drink_size = "None"
+orders = ["", "", "", 0]
+donut_index = 0
+drink_index = 1
+holes_index = 2
+sugar_index = 3
 donut_total = 0
 drink_total = 0
 End_Order = False
@@ -18,21 +24,21 @@ Drink_Attempts = 0
 Sugar_Size = 0
 print ("Hello, Welcome To Krispy Kreme, unfortunately were low on donuts and only have") 
 print ("Chocolate Frosted, Strawberry Frosted, and Boston Creme.")
-while initial:
-    order = input ("Which one would you like?").lower().strip()
-    if order == "chocolate frosted":
+while initial == True:
+    order = input ("Which one would you like?")
+    if order == " Chocolate Frosted":
         print ("Okay,That will be 3.656186...$")
         Order_Total += 3.65618638176481684611687416816
         donut_total += 1
         donut_type = True
         initial = False
-    elif order == "strawberry frosted":
+    elif order == " Strawberry Frosted":
         print ("Okay,That will be 3.55$")
         Order_Total += 3.55
         donut_total += 1
         donut_type = True
         initial = False
-    elif order == "boston creme":
+    elif order == " Boston Creme":
         print ("Okay,That will be 3.50$")
         Order_Total += 3.50
         donut_total += 1
@@ -44,77 +50,79 @@ while initial:
     if attempts == 3:
         print ("Please Go Away, Your holding up the Line")    
         break
-while donut_type:
-    drink = input ("Would you like a Coffee with that?").lower().strip()
-    if drink == "yes" :
+while donut_type == True:
+    drink = input ("Would you like a Coffee with that?")
+    if drink == " Yes" :
         drink_choice = True
         drink_total += 1
         break
-    elif drink == "no" :  
+    elif drink == " No" or " no" :  
         Dozen_Time = True
         NoCoffee = ("")
         break
     else:
         print ("Sorry, I don't know what your talking about")   
-while drink_choice:
-    drink_size = input ("Okay, Would you like A Small, A Medium, Or A Large?").lower().strip()
-    if drink_size == "a small" :
+        exit()
+while drink_choice == True :
+    drink_size = input ("Okay, Would you like A Small, A Medium, Or A Large?")
+    if drink_size == " A Small" :
         print ("Okay, That will be an additional 1.00$")
         Order_Total += 1.00
         Dozen_Time = True
         break
-    elif drink_size == "a medium" :
+    elif drink_size == " A Medium" or " a medium" :
         print ("Okay, That will be an additional 1.75$")
         Order_Total += 1.75
         Dozen_Time = True
         break
-    elif drink_size == "a large" :
+    elif drink_size == " A Large" or " a large" :
         print ("Okay, That will be an additional 2.25")
         Order_Total += 2.25
         Dozen_Time = True
         break
 print (f"Okay, So far your order total is {Order_Total:.2f}$")
-while Dozen_Time:
-    DonutHoles = input ("Would you like Donut Holes with that as well?").lower().strip()
-    if DonutHoles == "yes" :
+if Dozen_Time == True :
+    DonutHoles = input ("Would you like Donut Holes with that as well?")
+    if DonutHoles == " Yes" :
         Donut_Hole_choice = True
-    if DonutHoles == "no" :  
+    elif DonutHoles == " No" or " no" :  
         Donut_Hole_Amount = " No"
         h = True
     else:
         print ("Sorry, I don't know what your talking about")   
-while Donut_Hole_choice:
-    Donut_Hole_Amount = input ("Okay, Would you like Four, a Half a Dozen, Or a Dozen?").lower().strip()
+        exit()
+while Donut_Hole_choice == True :
+    Donut_Hole_Amount = input ("Okay, Would you like Four, a Half a Dozen, Or a Dozen?")
     if Donut_Hole_Amount == " Four" :
         Mega_Small = input ("Are you sure you don't want a Dozen?")
-        if Mega_Small == "yes":
+        if Mega_Small == " Yes":
             print ("Okay that will be an additional 2.00$")
             Hole_Order_Total += 1
             Order_Total += 2
             h = True
             break
-        if Mega_Small == "no":
+        else:
             print ("Okay, That will be an additional 1.00$")
-            Order_Total += 3.00
+            Order_Total += 1.00
             Hole_Order_Total += 1
             h = True
             break
-    elif Donut_Hole_Amount == "a half a dozen":
+    elif Donut_Hole_Amount == " A Half a Dozen" or " a half a dozen" or" a Half a Dozen" :
         print ("Okay, That will be an additional 1.75$")
         Order_Total += 1.50
         Hole_Order_Total += 1
         h = True
         break
-    elif Donut_Hole_Amount == "a dozen" :
+    elif Donut_Hole_Amount == " a Dozen" or " A Dozen" or " a dozen" :
         print ("Okay, That will be an additional 2.25")
         Order_Total += 2.00
         Hole_Order_Total += 2.00
         h = True
         break
 print (f"Okay, So far your order total is {Order_Total:.2f}$")
-while h:
-    Sugar = input ("Would you like sugar in your Coffee?, only 25 cents a packet.").lower().strip()
-    if Sugar == "yes":
+while h == True :
+    Sugar = input ("Would you like sugar in your Coffee?, only 25 cents a packet.")
+    if Sugar == " Yes":
         Sugar_Size = int(input("How much Sugar would you liKe?"))
         if int(Sugar_Size) > 10:
             print ("Do you want to die of obesity?, Try Again...")
@@ -122,19 +130,20 @@ while h:
             print (f"Okay, {Sugar_Size} packets for you")
             print (f"Okay that will be {Sugar_Size * 0.25 }$")
             Sugar_Price = int(Sugar_Size) * .25
-            Order_Total + Sugar_Price
+            Order_Total += Sugar_Price
             h = False
             End_Order = True
-    elif Sugar == "no":
+    elif Sugar == " No":
         h = False
         End_Order = True
-while End_Order:       
-    print (f"""So far your order total is {Order_Total:.2f}$
-    Okay, So far you have ordered{order}, You said{drink} to{drink_size} coffee
-    You also said{DonutHoles} and got{Donut_Hole_Amount} Donut Holes
-    Furthermore, you said{Sugar} to sugar and got {Sugar_Size}""")
+while End_Order == True:       
+    orders[donut_index] = order
+    orders[drink_index] = drink_size
+    orders[holes_index] = Donut_Hole_Amount
+    orders[sugar_index] = Sugar_Size
+    print ("you ordered:")
+    print (orders)
     if donut_total + drink_total + Hole_Order_Total >= 3.00:
         print ("You ordered the combo and saved one dollar!")
         Order_Total -= 1.00
         print (f"Your final total is {Order_Total:.2f}$")
-    exit()
